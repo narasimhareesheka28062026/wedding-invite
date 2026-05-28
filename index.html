@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Narasimha & Reesheka • Wedding Invitation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Tangerine:wght@400;700&family=Cinzel:wght@400;500;600&family=Tiro+Telugu&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #c9a961;
+    --gold-light: #e8d4a0;
+    --gold-dark: #8b6f3a;
+    --maroon: #6b1d2c;
+    --maroon-deep: #4a0e1c;
+    --cream: #fdf8ee;
+    --cream-warm: #f5ead0;
+    --ink: #2b1810;
+    --rose: #c4847a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Cormorant Garamond', serif;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+    line-height: 1.6;
+    font-feature-settings: "lnum" 1;
+    font-variant-numeric: lining-nums;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(201, 169, 97, 0.08) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(107, 29, 44, 0.06) 0%, transparent 40%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    padding: 4rem 1.5rem;
+    background: radial-gradient(ellipse at center, var(--cream-warm) 0%, var(--cream) 70%);
+    overflow: hidden;
+  }
+  .hero-ornament { position: absolute; width: 320px; opacity: 0.85; }
+  .hero-ornament.top { top: 2rem; left: 50%; transform: translateX(-50%); }
+  .hero-ornament.bottom { bottom: 2rem; left: 50%; transform: translateX(-50%) rotate(180deg); }
+
+  /* SYMMETRIC corner ornaments — single SVG, flipped per position */
+  .hero-corner { position: absolute; width: 110px; height: 110px; opacity: 0.55; }
+  .hero-corner.tl { top: 1.5rem; left: 1.5rem; }
+  .hero-corner.tr { top: 1.5rem; right: 1.5rem; transform: scaleX(-1); }
+  .hero-corner.bl { bottom: 1.5rem; left: 1.5rem; transform: scaleY(-1); }
+  .hero-corner.br { bottom: 1.5rem; right: 1.5rem; transform: scale(-1, -1); }
+
+  .hero-content { position: relative; z-index: 2; max-width: 720px; animation: fadeUp 1.4s ease-out; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .om-symbol {
+    font-family: 'Tiro Telugu', 'Noto Sans Devanagari', serif;
+    font-size: 2.4rem;
+    line-height: 1.4;
+    padding-top: 0.5rem;
+    margin: 0 auto 0.6rem;
+    background: linear-gradient(180deg, #e8d4a0 0%, #c9a961 50%, #8b6f3a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--gold);
+    text-shadow: 0 2px 8px rgba(107, 29, 44, 0.15);
+    filter: drop-shadow(0 2px 4px rgba(107, 29, 44, 0.1));
+  }
+  .blessing { font-family: 'Tiro Telugu', serif; font-size: 1.05rem; color: var(--maroon); letter-spacing: 0.05em; margin-bottom: 0.4rem; }
+  .blessing-en { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.4em; color: var(--gold-dark); text-transform: uppercase; margin-bottom: 2.5rem; }
+  .invite-label { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.45em; color: var(--gold-dark); text-transform: uppercase; margin-bottom: 1.5rem; }
+
+  .couple-names {
+    font-family: 'Tangerine', cursive;
+    font-size: clamp(3.5rem, 9vw, 6.5rem);
+    color: var(--maroon);
+    line-height: 1;
+    margin: 1rem 0;
+    font-weight: 700;
+    white-space: nowrap;
+    text-align: center;
+  }
+  .couple-names .name {
+    display: inline;
+  }
+  .ampersand {
+    font-family: 'Tangerine', cursive;
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    color: var(--gold);
+    font-weight: 400;
+    font-style: italic;
+    display: inline-block;
+    transform: translateY(-0.1em);
+    margin: 0 0.15em;
+    line-height: 1;
+  }
+  /* On very narrow screens, allow the names to stack */
+  @media (max-width: 480px) {
+    .couple-names {
+      white-space: normal;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.1em;
+    }
+  }
+  .telugu-names {
+    font-family: 'Tiro Telugu', serif;
+    font-size: clamp(1.4rem, 3.5vw, 2rem);
+    color: var(--maroon-deep);
+    margin: 0.5rem 0 1.5rem;
+    letter-spacing: 0.02em;
+  }
+  .hero-divider { display: flex; align-items: center; justify-content: center; gap: 1rem; margin: 1.8rem 0; color: var(--gold); }
+  .hero-divider .line { width: 80px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+  .hero-divider .diamond { font-size: 0.8rem; }
+  .wedding-date { font-family: 'Cinzel', serif; font-size: 1.05rem; letter-spacing: 0.35em; color: var(--ink); margin-top: 1rem; }
+  .wedding-tagline { font-style: italic; font-size: 1.1rem; color: var(--gold-dark); margin-top: 1.2rem; }
+
+  /* COUNTDOWN */
+  .countdown-section { padding: 5rem 1.5rem; background: linear-gradient(180deg, var(--cream) 0%, var(--cream-warm) 100%); text-align: center; }
+  .section-title { font-family: 'Tangerine', cursive; font-size: clamp(3rem, 7vw, 4.5rem); color: var(--maroon); margin-bottom: 0.5rem; font-weight: 700; }
+  .section-subtitle { font-family: 'Cinzel', serif; font-size: 0.78rem; letter-spacing: 0.4em; color: var(--gold-dark); text-transform: uppercase; margin-bottom: 3rem; }
+  .countdown { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; max-width: 800px; margin: 0 auto; }
+  .countdown-box { background: var(--cream); border: 1px solid var(--gold); padding: 1.5rem 1.8rem; min-width: 110px; position: relative; box-shadow: 0 4px 20px rgba(107, 29, 44, 0.08); }
+  .countdown-box::before, .countdown-box::after { content: ''; position: absolute; width: 12px; height: 12px; border: 1px solid var(--gold); }
+  .countdown-box::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+  .countdown-box::after { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+  .countdown-number { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 500; color: var(--maroon); line-height: 1; }
+  .countdown-label { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.25em; color: var(--gold-dark); text-transform: uppercase; margin-top: 0.5rem; }
+
+  /* SACRED MOMENTS - SLIDESHOW */
+  .moments-section { padding: 6rem 1.5rem; background: var(--cream); text-align: center; }
+
+  .slideshow {
+    max-width: 900px;
+    margin: 3rem auto 0;
+    position: relative;
+    padding: 14px;
+    border: 1px solid var(--gold);
+    background: var(--cream);
+    box-shadow: 0 12px 40px rgba(107, 29, 44, 0.12);
+  }
+  .slideshow::before {
+    content: '';
+    position: absolute;
+    inset: 7px;
+    border: 1px solid rgba(201, 169, 97, 0.5);
+    pointer-events: none;
+    z-index: 3;
+  }
+
+  .slides-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+  }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+  }
+  .slide.active { opacity: 1; }
+  .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Navigation arrows */
+  .slide-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(253, 248, 238, 0.85);
+    border: 1px solid var(--gold);
+    color: var(--maroon);
+    font-size: 1.4rem;
+    cursor: pointer;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
+  }
+  .slide-nav:hover {
+    background: var(--maroon);
+    color: var(--cream);
+    transform: translateY(-50%) scale(1.08);
+  }
+  .slide-nav.prev { left: 25px; }
+  .slide-nav.next { right: 25px; }
+
+  /* Dot indicators */
+  .slide-dots {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.7rem;
+  }
+  .slide-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(201, 169, 97, 0.4);
+    border: 1px solid var(--gold);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+  }
+  .slide-dot.active {
+    background: var(--maroon);
+    transform: scale(1.3);
+  }
+
+  @media (max-width: 640px) {
+    .slide-nav { width: 36px; height: 36px; font-size: 1.1rem; }
+    .slide-nav.prev { left: 18px; }
+    .slide-nav.next { right: 18px; }
+  }
+
+  /* EVENTS */
+  .events-section { padding: 6rem 1.5rem; background: var(--cream); }
+  .events-container { max-width: 950px; margin: 3rem auto 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+  .event-card { background: var(--cream); padding: 2.8rem 2rem; text-align: center; border: 1px solid rgba(201, 169, 97, 0.4); position: relative; transition: transform 0.4s ease, box-shadow 0.4s ease; }
+  .event-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(107, 29, 44, 0.15); }
+  .event-card::before { content: ''; position: absolute; inset: 8px; border: 1px solid var(--gold); pointer-events: none; }
+  .event-badge { display: inline-block; font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.3em; color: var(--gold-dark); text-transform: uppercase; background: var(--cream-warm); padding: 0.4rem 1rem; border: 1px solid var(--gold); margin-bottom: 1.2rem; }
+  .event-icon-large {
+    font-size: 2.8rem;
+    line-height: 1;
+    margin: 0.5rem 0 0.8rem;
+    filter: drop-shadow(0 2px 4px rgba(107, 29, 44, 0.15));
+  }
+  .event-name { font-family: 'Tangerine', cursive; font-size: 3.2rem; color: var(--maroon); line-height: 1; margin-bottom: 0.4rem; font-weight: 700; }
+  .event-time { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.25em; color: var(--ink); text-transform: uppercase; margin: 0.6rem 0; }
+  .event-venue { font-size: 1.05rem; color: var(--ink); line-height: 1.6; margin: 0.8rem 0 1.5rem; }
+  .event-venue strong { display: block; font-weight: 600; color: var(--maroon-deep); margin-bottom: 0.3rem; font-size: 1.1rem; }
+  .map-btn { display: inline-block; padding: 0.7rem 1.8rem; background: var(--maroon); color: var(--cream); font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.3em; text-decoration: none; text-transform: uppercase; border: 1px solid var(--gold); transition: all 0.3s ease; }
+  .map-btn:hover { background: var(--maroon-deep); transform: translateY(-2px); box-shadow: 0 6px 18px rgba(107, 29, 44, 0.3); }
+
+  /* Combined event card (Reception + Kalyanam at same venue) */
+  .combined-events {
+    margin: 1.2rem auto 1.5rem;
+    max-width: 300px;
+    text-align: left;
+  }
+  .combined-event-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.4rem 0;
+  }
+  .combined-event-icon {
+    font-size: 1.6rem;
+    flex-shrink: 0;
+    width: 40px;
+    text-align: center;
+  }
+  .combined-event-detail {
+    flex: 1;
+  }
+  .combined-event-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    color: var(--maroon-deep);
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+  }
+  .combined-event-label .te-small {
+    font-family: 'Tiro Telugu', serif;
+    font-size: 0.85rem;
+    letter-spacing: normal;
+    color: var(--gold-dark);
+    text-transform: none;
+    margin-left: 0.4rem;
+    font-weight: normal;
+  }
+  .combined-event-time {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: var(--ink);
+    line-height: 1.4;
+    font-feature-settings: "lnum" 1, "tnum" 1;
+    font-variant-numeric: lining-nums tabular-nums;
+  }
+  .combined-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 0.6rem 0;
+    position: relative;
+  }
+  .combined-divider::before {
+    content: '❖';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--cream);
+    padding: 0 0.5rem;
+    color: var(--gold);
+    font-size: 0.7rem;
+  }
+
+  /* FAMILIES */
+  .families-section { padding: 6rem 1.5rem; background: linear-gradient(180deg, var(--cream-warm) 0%, var(--cream) 100%); text-align: center; }
+  .families-grid { max-width: 900px; margin: 3rem auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; text-align: center; }
+  .family-block h3 { font-family: 'Tangerine', cursive; font-size: 2.8rem; color: var(--maroon); margin-bottom: 1rem; font-weight: 700; }
+  .family-block .label { font-family: 'Tiro Telugu', serif; font-size: 1rem; color: var(--gold-dark); margin-bottom: 1.5rem; }
+  .family-block p { font-size: 1.1rem; line-height: 1.8; color: var(--ink); }
+  .family-block p strong { color: var(--maroon-deep); font-weight: 600; }
+  @media (max-width: 640px) { .families-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
+
+  /* FOOTER */
+  .footer { padding: 4rem 1.5rem 3rem; background: var(--cream); text-align: center; }
+  .footer-names { font-family: 'Tangerine', cursive; font-size: 3.5rem; color: var(--maroon); margin-bottom: 0.5rem; font-weight: 700; }
+  .footer-names-te { font-family: 'Tiro Telugu', serif; font-size: 1.2rem; color: var(--maroon-deep); margin-bottom: 1.5rem; }
+  .footer-thanks { font-style: italic; color: var(--gold-dark); font-size: 1.05rem; max-width: 550px; margin: 0 auto 1.5rem; }
+  .footer-contact { font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.3em; color: var(--ink); text-transform: uppercase; opacity: 0.7; }
+
+  @media (max-width: 640px) {
+    .hero-ornament { width: 220px; }
+    .hero-corner { width: 70px; height: 70px; }
+    .countdown-box { padding: 1rem 1.2rem; min-width: 80px; }
+    .countdown-number { font-size: 2.2rem; }
+    .countdown { gap: 0.8rem; }
+    .om-symbol { font-size: 2rem; }
+  }
+
+  .petal { position: fixed; top: -50px; font-size: 1.2rem; color: var(--rose); opacity: 0.45; pointer-events: none; z-index: 1; animation: fall linear infinite; }
+  @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <!-- Top decorative band -->
+  <svg class="hero-ornament top" viewBox="0 0 320 50" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="#c9a961" fill="none" stroke-width="1">
+      <!-- center lotus medallion -->
+      <circle cx="160" cy="25" r="10" />
+      <circle cx="160" cy="25" r="5" fill="#c9a961" opacity="0.5" stroke="none"/>
+      <circle cx="160" cy="25" r="2" fill="#6b1d2c" stroke="none"/>
+      <!-- petal points around center -->
+      <path d="M160 15 L160 8 M160 35 L160 42 M150 25 L143 25 M170 25 L177 25"/>
+      <path d="M153 18 L148 13 M167 18 L172 13 M153 32 L148 37 M167 32 L172 37" stroke-width="0.7"/>
+      <!-- side wings (elegant curves) -->
+      <path d="M150 25 Q100 5, 50 25 Q70 35, 100 30"/>
+      <path d="M170 25 Q220 5, 270 25 Q250 35, 220 30"/>
+      <!-- accent dots -->
+      <circle cx="50" cy="25" r="2.5" fill="#c9a961" stroke="none"/>
+      <circle cx="270" cy="25" r="2.5" fill="#c9a961" stroke="none"/>
+      <circle cx="20" cy="25" r="1.5" fill="#c9a961" stroke="none"/>
+      <circle cx="300" cy="25" r="1.5" fill="#c9a961" stroke="none"/>
+      <circle cx="100" cy="30" r="1.5" fill="#c9a961" stroke="none"/>
+      <circle cx="220" cy="30" r="1.5" fill="#c9a961" stroke="none"/>
+    </g>
+  </svg>
+
+  <svg class="hero-ornament bottom" viewBox="0 0 320 50" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="#c9a961" fill="none" stroke-width="1">
+      <circle cx="160" cy="25" r="10" />
+      <circle cx="160" cy="25" r="5" fill="#c9a961" opacity="0.5" stroke="none"/>
+      <circle cx="160" cy="25" r="2" fill="#6b1d2c" stroke="none"/>
+      <path d="M160 15 L160 8 M160 35 L160 42 M150 25 L143 25 M170 25 L177 25"/>
+      <path d="M153 18 L148 13 M167 18 L172 13 M153 32 L148 37 M167 32 L172 37" stroke-width="0.7"/>
+      <path d="M150 25 Q100 5, 50 25 Q70 35, 100 30"/>
+      <path d="M170 25 Q220 5, 270 25 Q250 35, 220 30"/>
+      <circle cx="50" cy="25" r="2.5" fill="#c9a961" stroke="none"/>
+      <circle cx="270" cy="25" r="2.5" fill="#c9a961" stroke="none"/>
+      <circle cx="20" cy="25" r="1.5" fill="#c9a961" stroke="none"/>
+      <circle cx="300" cy="25" r="1.5" fill="#c9a961" stroke="none"/>
+      <circle cx="100" cy="30" r="1.5" fill="#c9a961" stroke="none"/>
+      <circle cx="220" cy="30" r="1.5" fill="#c9a961" stroke="none"/>
+    </g>
+  </svg>
+
+  <!-- SYMMETRIC corner ornament (used 4x with CSS transforms) -->
+  <svg class="hero-corner tl" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="#c9a961" fill="none" stroke-width="0.9" stroke-linecap="round">
+      <!-- outer arc -->
+      <path d="M5 5 Q5 60, 60 60 Q90 60, 95 30"/>
+      <!-- inner curl -->
+      <path d="M10 10 Q10 45, 45 45 Q70 45, 70 20"/>
+      <!-- decorative leaf-petal -->
+      <path d="M25 25 Q35 20, 45 30 Q40 40, 25 35 Z" fill="#c9a961" opacity="0.25"/>
+      <!-- center dot cluster -->
+      <circle cx="30" cy="30" r="2.5" fill="#c9a961" stroke="none"/>
+      <circle cx="50" cy="50" r="2" fill="#c9a961" stroke="none"/>
+      <circle cx="15" cy="15" r="1.5" fill="#c9a961" stroke="none"/>
+      <!-- accent flourishes -->
+      <path d="M60 60 Q68 55, 72 48"/>
+      <path d="M5 50 Q15 55, 22 50" stroke-width="0.7"/>
+    </g>
+  </svg>
+  <svg class="hero-corner tr" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="#c9a961" fill="none" stroke-width="0.9" stroke-linecap="round">
+      <path d="M5 5 Q5 60, 60 60 Q90 60, 95 30"/>
+      <path d="M10 10 Q10 45, 45 45 Q70 45, 70 20"/>
+      <path d="M25 25 Q35 20, 45 30 Q40 40, 25 35 Z" fill="#c9a961" opacity="0.25"/>
+      <circle cx="30" cy="30" r="2.5" fill="#c9a961" stroke="none"/>
+      <circle cx="50" cy="50" r="2" fill="#c9a961" stroke="none"/>
+      <circle cx="15" cy="15" r="1.5" fill="#c9a961" stroke="none"/>
+      <path d="M60 60 Q68 55, 72 48"/>
+      <path d="M5 50 Q15 55, 22 50" stroke-width="0.7"/>
+    </g>
+  </svg>
+  <svg class="hero-corner bl" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="#c9a961" fill="none" stroke-width="0.9" stroke-linecap="round">
+      <path d="M5 5 Q5 60, 60 60 Q90 60, 95 30"/>
+      <path d="M10 10 Q10 45, 45 45 Q70 45, 70 20"/>
+      <path d="M25 25 Q35 20, 45 30 Q40 40, 25 35 Z" fill="#c9a961" opacity="0.25"/>
+      <circle cx="30" cy="30" r="2.5" fill="#c9a961" stroke="none"/>
+      <circle cx="50" cy="50" r="2" fill="#c9a961" stroke="none"/>
+      <circle cx="15" cy="15" r="1.5" fill="#c9a961" stroke="none"/>
+      <path d="M60 60 Q68 55, 72 48"/>
+      <path d="M5 50 Q15 55, 22 50" stroke-width="0.7"/>
+    </g>
+  </svg>
+  <svg class="hero-corner br" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="#c9a961" fill="none" stroke-width="0.9" stroke-linecap="round">
+      <path d="M5 5 Q5 60, 60 60 Q90 60, 95 30"/>
+      <path d="M10 10 Q10 45, 45 45 Q70 45, 70 20"/>
+      <path d="M25 25 Q35 20, 45 30 Q40 40, 25 35 Z" fill="#c9a961" opacity="0.25"/>
+      <circle cx="30" cy="30" r="2.5" fill="#c9a961" stroke="none"/>
+      <circle cx="50" cy="50" r="2" fill="#c9a961" stroke="none"/>
+      <circle cx="15" cy="15" r="1.5" fill="#c9a961" stroke="none"/>
+      <path d="M60 60 Q68 55, 72 48"/>
+      <path d="M5 50 Q15 55, 22 50" stroke-width="0.7"/>
+    </g>
+  </svg>
+
+  <div class="hero-content">
+    <!-- OM Symbol -->
+    <div class="om-symbol">ॐ</div>
+
+    <div class="blessing">శుభమస్తు &nbsp;•&nbsp; శ్రీరస్తు &nbsp;•&nbsp; అవిఘ్నమస్తు</div>
+    <div class="blessing-en">Shubhamastu &nbsp;•&nbsp; Shrirasthu &nbsp;•&nbsp; Avighnamastu</div>
+
+    <div class="invite-label">Together with the families</div>
+
+    <h1 class="couple-names">
+      <span class="name">Narasimha</span>
+      <span class="ampersand">&amp;</span>
+      <span class="name">Reesheka</span>
+    </h1>
+    <div class="telugu-names">నరసింహ &amp; రీషిక</div>
+
+    <div class="hero-divider">
+      <span class="line"></span>
+      <span class="diamond">❖</span>
+      <span class="line"></span>
+    </div>
+
+    <div class="invite-label">Cordially invite you to celebrate the wedding</div>
+
+    <p class="wedding-date">SUNDAY • 28 JUNE 2026</p>
+    <p class="wedding-tagline">"Two souls woven by destiny, blessed by family"</p>
+  </div>
+</section>
+
+<!-- COUNTDOWN -->
+<section class="countdown-section">
+  <h2 class="section-title">The Countdown Begins</h2>
+  <p class="section-subtitle">Until We Tie The Knot</p>
+
+  <div class="countdown" id="countdown">
+    <div class="countdown-box"><div class="countdown-number" id="days">00</div><div class="countdown-label">Days</div></div>
+    <div class="countdown-box"><div class="countdown-number" id="hours">00</div><div class="countdown-label">Hours</div></div>
+    <div class="countdown-box"><div class="countdown-number" id="minutes">00</div><div class="countdown-label">Minutes</div></div>
+    <div class="countdown-box"><div class="countdown-number" id="seconds">00</div><div class="countdown-label">Seconds</div></div>
+  </div>
+</section>
+
+<!-- SACRED MOMENTS - SLIDESHOW -->
+<section class="moments-section">
+  <h2 class="section-title">Sacred Moments</h2>
+  <p class="section-subtitle">A Glimpse Of Our Special Day</p>
+
+  <div class="slideshow">
+    <div class="slides-wrapper">
+      <div class="slide active"><img src="mandapam.png" alt="At the mandapam" /></div>
+      <div class="slide"><img src="pradakshina.png" alt="Around the sacred fire" /></div>
+      <div class="slide"><img src="arundhati.png" alt="Arundhati Nakshatra" /></div>
+    </div>
+    <button class="slide-nav prev" onclick="changeSlide(-1)" aria-label="Previous">‹</button>
+    <button class="slide-nav next" onclick="changeSlide(1)" aria-label="Next">›</button>
+  </div>
+
+  <div class="slide-dots" id="slideDots">
+    <button class="slide-dot active" onclick="goToSlide(0)" aria-label="Slide 1"></button>
+    <button class="slide-dot" onclick="goToSlide(1)" aria-label="Slide 2"></button>
+    <button class="slide-dot" onclick="goToSlide(2)" aria-label="Slide 3"></button>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section class="events-section">
+  <div style="text-align:center;">
+    <h2 class="section-title">Wedding Celebrations</h2>
+    <p class="section-subtitle">Join Us In Joyous Festivities</p>
+  </div>
+
+  <div class="events-container">
+
+    <!-- Card 1: Vindhu -->
+    <div class="event-card">
+      <span class="event-badge">Vindhu • విందు</span>
+      <h3 class="event-name">Vindhu</h3>
+
+      <div class="combined-events">
+        <div class="combined-event-row">
+          <div class="combined-event-icon">🍽️</div>
+          <div class="combined-event-detail">
+            <div class="combined-event-label">Lunch <span class="te-small">భోజనం</span></div>
+            <div class="combined-event-time">Sunday • 28 June 2026<br/>From 11:00 AM onwards</div>
+          </div>
+        </div>
+      </div>
+
+      <p class="event-venue">
+        <strong>Our Residence</strong>
+        Turpupalem, Malikipuram Mandal,<br/>
+        Konaseema District, Andhra Pradesh
+      </p>
+      <a class="map-btn" href="https://maps.app.goo.gl/oHxhu3XycyoPzpac9" target="_blank" rel="noopener">Open in Maps</a>
+    </div>
+
+    <!-- Card 2: Reception & Kalyanam (combined, same venue) -->
+    <div class="event-card event-card-combined">
+      <span class="event-badge">Wedding Ceremony • వివాహం</span>
+      <h3 class="event-name">Reception &amp; Kalyanam</h3>
+
+      <div class="combined-events">
+        <div class="combined-event-row">
+          <div class="combined-event-icon">🍽️</div>
+          <div class="combined-event-detail">
+            <div class="combined-event-label">Reception <span class="te-small">విందు భోజనం</span></div>
+            <div class="combined-event-time">Sunday • 28 June 2026<br/>Dinner served from 7:00 PM</div>
+          </div>
+        </div>
+
+        <div class="combined-divider"></div>
+
+        <div class="combined-event-row">
+          <div class="combined-event-icon">🛕</div>
+          <div class="combined-event-detail">
+            <div class="combined-event-label">Kalyanam <span class="te-small">కల్యాణం</span></div>
+            <div class="combined-event-time">Monday Early Morning<br/>Muhurtham at 2:04 AM</div>
+          </div>
+        </div>
+      </div>
+
+      <p class="event-venue">
+        <strong>M.G.K Central Functional Hall</strong>
+        Lakkavaram,<br/>
+        Konaseema District, Andhra Pradesh
+      </p>
+      <a class="map-btn" href="https://maps.app.goo.gl/5SL7LD44mKiX8hdC6" target="_blank" rel="noopener">Open in Maps</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- FAMILIES -->
+<section class="families-section">
+  <h2 class="section-title">With Blessings From</h2>
+  <p class="section-subtitle">Our Beloved Families</p>
+
+  <div class="families-grid">
+    <div class="family-block">
+      <h3>Groom's Family</h3>
+      <div class="label">వరుని తరఫున</div>
+      <p>
+        <strong>Sri Adabala Veeraprabhakaram</strong><br/>
+        &amp;<br/>
+        <strong>Smt. Adabala Anjaneyamma</strong><br/>
+        <span style="font-style:italic; color:var(--gold-dark); font-size:0.95rem;">Parents of the Groom</span>
+      </p>
+    </div>
+
+    <div class="family-block">
+      <h3>Bride's Family</h3>
+      <div class="label">వధువు తరఫున</div>
+      <p>
+        <strong>Sri Yenumula Lakshmana Rao</strong><br/>
+        &amp;<br/>
+        <strong>Smt. Yenumula Venkata Ramalakshmi</strong><br/>
+        <span style="font-style:italic; color:var(--gold-dark); font-size:0.95rem;">Parents of the Bride</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="hero-divider">
+    <span class="line"></span>
+    <span class="diamond">❖</span>
+    <span class="line"></span>
+  </div>
+  <h3 class="footer-names">Narasimha&nbsp;&amp;&nbsp;Reesheka</h3>
+  <div class="footer-names-te">నరసింహ &amp; రీషిక</div>
+  <p class="footer-thanks">
+    With folded hands and grateful hearts, we await your blessings and the warmth of your presence on our special day.
+  </p>
+  <p class="footer-contact">For Queries: +91 98499 33495 &nbsp;•&nbsp; +91 91771 15753</p>
+</footer>
+
+<script>
+  // ===== SLIDESHOW =====
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.slide-dot');
+  const totalSlides = slides.length;
+
+  function showSlide(index) {
+    slides.forEach(s => s.classList.remove('active'));
+    dots.forEach(d => d.classList.remove('active'));
+    slides[index].classList.add('active');
+    dots[index].classList.add('active');
+  }
+
+  function changeSlide(direction) {
+    currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+    showSlide(currentSlide);
+    resetAutoplay();
+  }
+
+  function goToSlide(index) {
+    currentSlide = index;
+    showSlide(currentSlide);
+    resetAutoplay();
+  }
+
+  // Auto-advance every 4 seconds
+  let autoplayInterval = setInterval(() => changeSlide(1), 4000);
+
+  function resetAutoplay() {
+    clearInterval(autoplayInterval);
+    autoplayInterval = setInterval(() => changeSlide(1), 4000);
+  }
+
+  // ===== Countdown Timer =====
+  const weddingDate = new Date('2026-06-28T02:04:00+05:30').getTime();
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const diff = weddingDate - now;
+    if (diff < 0) {
+      document.getElementById('countdown').innerHTML =
+        '<p style="font-family:Tangerine,cursive;font-size:3rem;color:var(--maroon);">The day is here! 💐</p>';
+      return;
+    }
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    document.getElementById('days').textContent = String(days).padStart(2, '0');
+    document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+    document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+    document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  function createPetal() {
+    const petal = document.createElement('div');
+    petal.className = 'petal';
+    petal.textContent = ['❀', '✿', '❁', '🌸'][Math.floor(Math.random() * 4)];
+    petal.style.left = Math.random() * 100 + 'vw';
+    petal.style.animationDuration = (10 + Math.random() * 8) + 's';
+    petal.style.fontSize = (0.8 + Math.random() * 1.2) + 'rem';
+    document.body.appendChild(petal);
+    setTimeout(() => petal.remove(), 18000);
+  }
+  setInterval(createPetal, 1800);
+</script>
+
+</body>
+</html>
